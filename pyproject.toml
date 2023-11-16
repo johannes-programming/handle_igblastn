@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "handle_igblastn"
-version = "0.0.0"
+version = "0.0.1"
 description = "Handle igblastn."
 readme = "README.rst"
 authors = [
@@ -18,8 +18,14 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 keywords = []
-dependencies = []
+dependencies = [
+    'simple_tsv>=1.0',
+]
 requires-python = ">=3.11"
 
 [project.license]
 file = "LICENSE.txt"
+
+[project.urls]
+Download = "https://pypi.org/project/handle-igblastn/#files"
+Source = "https://github.com/johannes-programming/handle_igblastn"

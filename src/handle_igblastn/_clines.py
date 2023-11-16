@@ -40,26 +40,21 @@ class Cline:
     def exec(self, **kwargs):
         _subprocess.run(list(self), **kwargs)
     @classmethod
-    def _file(cls, *, kwargs, key, directory, filename):
-    	if key in kwargs.keys():
-    		return
-        kwargs[k] _os.path.join(directory, filename)
+    def _file(cls, file, *, directory, filename):
+    	if file is not None:
+            return file
+        return _os.path.join(directory, filename)
     @classmethod
     @_contextlib.contextmanager
-    def manager(cls, cmd, **kwargs):
-    	keys = ('query', 'out')
-    	tmp_needed = False
-    	for k in keys:
-    		if k not in kwargs.keys():
-    			tmp_needed = True
-        if tmp_needed:
+    def manager(cls, *args, query=None, out=None, **kwargs):
+        if None in [query, out]:
             inner_manager = _tmp.TemporaryDirectory()
         else:
             inner_manager = _contextlib.nullcontext()
         with inner_manager as directory:
-            cls._file(key="query", kwargs=kwargs, directory=directory, filename="query.fasta")
-            cls._file(key="out", kwargs=kwargs, directory=directory, filename="out.txt")
-            yield cls(cmd, **kwargs)
+            query = cls._file(file=query, directory=directory, filename="query.fasta")
+            out = cls._file(file=out, directory=directory, filename="out.txt")
+            yield cls(*args, query=query, out=out, **kwargs)
 
 
 

@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "handle_igblastn"
-version = "0.0.1"
+version = "0.1.0"
 description = "Handle igblastn."
 readme = "README.rst"
 authors = [
@@ -19,7 +19,6 @@ classifiers = [
 ]
 keywords = []
 dependencies = [
-    'simple_tsv>=1.0',
 ]
 requires-python = ">=3.11"
 
